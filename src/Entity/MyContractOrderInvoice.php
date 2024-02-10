@@ -56,9 +56,9 @@ class MyContractOrderInvoice
     private $order;
 
     /**
-     * @var \ControleOnline\Entity\ReceiveInvoice
+     * @var \ControleOnline\Entity\Invoice
      *
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\ReceiveInvoice")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Invoice")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
      * })
@@ -168,10 +168,10 @@ class MyContractOrderInvoice
     /**
      * Set invoice
      *
-     * @param \ControleOnline\Entity\ReceiveInvoice $invoice
+     * @param \ControleOnline\Entity\Invoice $invoice
      * @return MyContractOrderInvoice
      */
-    public function setInvoice(ReceiveInvoice $invoice)
+    public function setInvoice(Invoice $invoice)
     {
         $this->invoice = $invoice;
 
@@ -181,9 +181,9 @@ class MyContractOrderInvoice
     /**
      * Get invoice
      *
-     * @return \ControleOnline\Entity\ReceiveInvoice
+     * @return \ControleOnline\Entity\Invoice
      */
-    public function getInvoice(): ReceiveInvoice
+    public function getInvoice(): Invoice
     {
         return $this->invoice;
     }
