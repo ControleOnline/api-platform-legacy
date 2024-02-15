@@ -33,7 +33,8 @@ use stdClass;
  *             "path"="/sales/orders",
  *          },
  *          "post"           ={
- *           "access_control"="is_granted('ROLE_CLIENT')",  
+ *              "path"="/orders",
+ *              "access_control"="is_granted('ROLE_CLIENT')",  
  *          },
  *     },
  *     itemOperations        ={
