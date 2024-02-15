@@ -24,13 +24,16 @@ use stdClass;
  *     attributes={
  *          "formats"={"jsonld", "json", "html", "jsonhal", "csv"={"text/csv"}},
  *     },  
- *     normalizationContext  ={"groups"={"order_read"}},
+ *     normalizationContext  ={"groups"={"order_read","order_write"}},
  *     denormalizationContext={"groups"={"order_write"}},
  *     collectionOperations  ={
  *         "get" ={ 
  *             "attributes"    ={"filters"={App\Filter\SalesOrderEntityFilter::class}}, 
  *             "access_control"="is_granted('ROLE_CLIENT')",
  *             "path"="/sales/orders",
+ *          },
+ *          "post"           ={
+ *           "access_control"="is_granted('ROLE_CLIENT')",  
  *          },
  *     },
  *     itemOperations        ={
@@ -178,7 +181,7 @@ class SalesOrder
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups({"order_read","company_expense_read","task_read","coupon_read","logistic_read","order_invoice_read"})
+     * @Groups({"order_read","order_write","company_expense_read","task_read","coupon_read","logistic_read","order_invoice_read"})
      * @ApiFilter(SearchFilter::class, properties={"id"="exact"})
      */
     private $id;
@@ -190,14 +193,14 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="client_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read", "invoice_read", "task_read"})
+     * @Groups({"order_read","order_write", "invoice_read", "task_read"})
      */
     private $client;
 
     /**
      * @var \DateTimeInterface
      * @ORM\Column(name="order_date", type="datetime",  nullable=false, columnDefinition="DATETIME")
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $orderDate;
 
@@ -205,7 +208,7 @@ class SalesOrder
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="ControleOnline\Entity\SalesOrderInvoice", mappedBy="order")
-     * @Groups({"order_read"}) 
+     * @Groups({"order_read","order_write"}) 
      */
     private $invoice;
 
@@ -213,7 +216,7 @@ class SalesOrder
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="ControleOnline\Entity\Task", mappedBy="order")
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $task;
 
@@ -221,13 +224,13 @@ class SalesOrder
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="ControleOnline\Entity\SalesOrderInvoiceTax", mappedBy="order")
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $invoiceTax;
 
     /**
      * @ORM\Column(name="alter_date", type="datetime",  nullable=false)
-     * @Groups({"hardware_read","order_read"})
+     * @Groups({"hardware_read","order_read","order_write"})
      */
     private $alterDate;
 
@@ -252,7 +255,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read"})
+     * @Groups({"hardware_read","order_read","order_write"})
      */
     private $status;
 
@@ -263,7 +266,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="delivery_people_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read"})
+     * @Groups({"hardware_read","order_read","order_write"})
      */
     private $deliveryPeople;
 
@@ -274,7 +277,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="retrieve_people_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read"})
+     * @Groups({"hardware_read","order_read","order_write"})
      */
     private $retrievePeople;
 
@@ -290,7 +293,7 @@ class SalesOrder
      * @var string
      *
      * @ORM\Column(name="app", type="string",  nullable=true)
-     * @Groups({"hardware_read","order_read"}) 
+     * @Groups({"hardware_read","order_read","order_write"}) 
      */
     private $app;
 
@@ -298,7 +301,7 @@ class SalesOrder
      * @var string
      *
      * @ORM\Column(name="other_informations", type="json",  nullable=true)
-     * @Groups({"order_read"}) 
+     * @Groups({"order_read","order_write"}) 
      */
     private $otherInformations;
 
@@ -309,7 +312,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="main_order_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $mainOrder;
 
@@ -320,7 +323,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="discount_coupon_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $discountCoupon;
 
@@ -329,7 +332,7 @@ class SalesOrder
      * @var integer
      *
      * @ORM\Column(name="main_order_id", type="integer",  nullable=true)
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $mainOrderId;
 
@@ -340,7 +343,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="contract_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read","task_read","logistic_read"}) 
+     * @Groups({"order_read","order_write","task_read","logistic_read"}) 
      * @ApiFilter(SearchFilter::class, properties={"contract"="exact"})
      */
     private $contract;
@@ -352,7 +355,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="payer_people_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read","task_read","invoice_read"})
+     * @Groups({"order_read","order_write","task_read","invoice_read"})
      */
     private $payer;
 
@@ -363,7 +366,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="provider_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read","invoice_read", "task_read"})
+     * @Groups({"order_read","order_write","invoice_read", "task_read"})
      */
     private $provider;
 
@@ -374,7 +377,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="quote_id", referencedColumnName="id")
      * })
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $quote;
 
@@ -445,7 +448,7 @@ class SalesOrder
      * @var float
      *
      * @ORM\Column(name="price", type="float",  nullable=false)
-     * @Groups({"order_read"})
+     * @Groups({"order_read","order_write"})
      */
     private $price;
 
@@ -501,7 +504,7 @@ class SalesOrder
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="ControleOnline\Entity\OrderQueue", mappedBy="order")
-     * @Groups({"order_read"}) 
+     * @Groups({"order_read","order_write"}) 
      */
     private $orderQueue;
 
