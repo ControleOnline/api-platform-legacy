@@ -174,7 +174,7 @@ use stdClass;
  * )
  */
 
-class SalesOrder 
+class SalesOrder
 {
     /**
      * @var integer
@@ -451,7 +451,7 @@ class SalesOrder
      * @ORM\Column(name="price", type="float",  nullable=false)
      * @Groups({"order_read","order_write"})
      */
-    private $price;
+    private $price = 0;
 
     /**
      * @var float
