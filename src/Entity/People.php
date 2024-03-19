@@ -24,6 +24,7 @@ use App\Controller\AdminPersonUsersAction;
 use App\Controller\CreateContactAction;
 use App\Controller\CreatePeopleCustomerAction;
 use App\Controller\CreateProfessionalAction;
+use App\Controller\CreateUserAction;
 use App\Controller\DownloadPersonFileAction;
 use App\Controller\GetClientCompanyAction;
 use App\Controller\GetCloseProfessionalsAction;
@@ -64,7 +65,11 @@ use stdClass;
             uriTemplate: '/people/{id}/contact',
             controller: SearchContactAction::class
         ),
-
+        new Post(
+            uriTemplate : '/people/{id}/add-user',
+            controller: CreateUserAction::class,
+            securityPostDenormalize: 'is_granted(\'ROLE_CLIENT\')',
+        ),
         new Put(
             security: 'is_granted(\'edit\', object)',
             uriTemplate: '/people/{id}/profile/{component}',
