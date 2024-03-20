@@ -24,7 +24,6 @@ use App\Controller\AdminPersonUsersAction;
 use App\Controller\CreateContactAction;
 use App\Controller\CreatePeopleCustomerAction;
 use App\Controller\CreateProfessionalAction;
-use App\Controller\CreateUserAction;
 use App\Controller\DownloadPersonFileAction;
 use App\Controller\GetClientCompanyAction;
 use App\Controller\GetCloseProfessionalsAction;
@@ -48,6 +47,7 @@ use App\Controller\SearchTasksPeopleAction;
 use App\Controller\UpdatePeopleProfileAction;
 use App\Controller\UploadPersonFilesAction;
 use App\Controller\VerifyPeopleStatusAction;
+use ControleOnline\Controller\CreateUserAction;
 use stdClass;
 
 /**
