@@ -41,12 +41,12 @@ class File
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups({"product_file_read","lesson_upload_file:post", "people_read", "task_interaction_read","hardware_read"})
+     * @Groups({"product_file_read","lesson_upload_file:post", "people_read", "task_interaction_read","display_read"})
      */
     private $id;
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Groups({"product_file_read","people_read", "lesson:read", "task_interaction_read","hardware_read"})
+     * @Groups({"product_file_read","people_read", "lesson:read", "task_interaction_read","display_read"})
      */
     private $url;
     /**

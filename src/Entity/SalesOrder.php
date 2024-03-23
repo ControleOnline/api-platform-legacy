@@ -157,7 +157,7 @@ use stdClass;
  *     "status"                                 : "exact",
  *     "status.realStatus"                      : "exact",
  *     "orderQueue.status.realStatus"           : "exact", 
- *     "orderQueue.queue.hardwareQueue.hardware"  : "exact",  
+ *     "orderQueue.queue.displayQueue.display"  : "exact",  
  *     "status.status"                          : "exact",
  *     "invoice.invoice"                        : "exact",
  *     "client"                                 : "exact",
@@ -227,7 +227,7 @@ class SalesOrder
 
     /**
      * @ORM\Column(name="alter_date", type="datetime",  nullable=false)
-     * @Groups({"hardware_read","order_read","order_write"})
+     * @Groups({"display_read","order_read","order_write"})
      */
     private $alterDate;
 
@@ -252,7 +252,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read","order_write"})
+     * @Groups({"display_read","order_read","order_write"})
      */
     private $status;
 
@@ -263,7 +263,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="delivery_people_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read","order_write"})
+     * @Groups({"display_read","order_read","order_write"})
      */
     private $deliveryPeople;
 
@@ -274,7 +274,7 @@ class SalesOrder
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="retrieve_people_id", referencedColumnName="id")
      * })
-     * @Groups({"hardware_read","order_read","order_write"})
+     * @Groups({"display_read","order_read","order_write"})
      */
     private $retrievePeople;
 
@@ -290,7 +290,7 @@ class SalesOrder
      * @var string
      *
      * @ORM\Column(name="app", type="string",  nullable=true)
-     * @Groups({"hardware_read","order_read","order_write"}) 
+     * @Groups({"display_read","order_read","order_write"}) 
      */
     private $app;
 

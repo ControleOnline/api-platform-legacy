@@ -572,7 +572,7 @@ class People extends Person
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups({"category_read","pruduct_read","school_class:item:get","hardware_read", "people:people_company:subresource", "people_student:collection:get",
+     * @Groups({"category_read","pruduct_read","school_class:item:get","display_read", "people:people_company:subresource", "people_student:collection:get",
      *     "people_professional:collection:get", "task_read", "task_interaction_read","coupon_read","logistic_read","notifications_read","people_provider_read"})
      */
     private $id;
@@ -593,7 +593,7 @@ class People extends Person
      *     "people:people_company:subresource", "people_student:collection:get",
      *     "people_professional:collection:get", "school_professional_weekly_read", "school_team_schedule_read",
      *     "school_team_schedule_read", "task_read", "task_interaction_read","coupon_read", "logistic_read",
-     *     "queue_read","hardware_read","notifications_read","people_provider_read"
+     *     "queue_read","display_read","notifications_read","people_provider_read"
      * })
      */
     private $name;
@@ -609,7 +609,7 @@ class People extends Person
      *     "my_contract_item_read", "mycontractpeople_read", "people:people_company:subresource",
      *     "school_professional_weekly_read", "school_team_schedule_read", "school_team_schedule_read",
      *     "people_professional:collection:get", "task_read", "task_interaction_read","coupon_read","logistic_read",
-     *     "pruduct_read","queue_read","hardware_read","notifications_read","people_provider_read"
+     *     "pruduct_read","queue_read","display_read","notifications_read","people_provider_read"
      * })
      */
     private $alias;
@@ -628,7 +628,7 @@ class People extends Person
     private $otherInformations;
     /**
      * @ORM\Column(type="string", length=1, nullable=false)
-     * @Groups({"pruduct_read","hardware_read","people_read", "my_contract_item_read", "mycontractpeople_read", "task_read", "task_interaction_read"})
+     * @Groups({"pruduct_read","display_read","people_read", "my_contract_item_read", "mycontractpeople_read", "task_read", "task_interaction_read"})
      */
     private $peopleType = 'F';
     /**
@@ -641,7 +641,7 @@ class People extends Person
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      * })
-     * @Groups({"people_read","hardware_read"})
+     * @Groups({"people_read","display_read"})
      */
     private $file;
     /**
