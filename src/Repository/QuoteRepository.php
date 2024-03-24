@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use ControleOnline\Entity\SalesOrder as Order;
 use ControleOnline\Entity\Status;
 use ControleOnline\Entity\People;
-use ControleOnline\Entity\Email\Email;
+use ControleOnline\Entity\Email;
 use ControleOnline\Entity\Phone;
 use ControleOnline\Entity\Language;
 use ControleOnline\Entity\Address;

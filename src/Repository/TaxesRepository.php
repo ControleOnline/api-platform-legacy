@@ -240,7 +240,7 @@ class TaxesRepository
         $people  = $this->user->getPeople();
         $isAdmin = $provider->getPeopleEmployee()
           ->exists(
-            function ($key, \ControleOnline\Entity\Link\PeopleEmployee $peopleEmployee) use ($people) {
+            function ($key, \ControleOnline\Entity\PeopleLinkEmployee $peopleEmployee) use ($people) {
               return $peopleEmployee->getEmployee() === $people;
             }
           );
