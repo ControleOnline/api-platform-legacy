@@ -91,10 +91,7 @@ class Contract
      * @Groups({"task_read"})
      */
     private $peoples;
-    /**
-     * @ORM\OneToOne(targetEntity=Team::class, mappedBy="contract")
-     */
-    private $team;
+
     /**
      * @ORM\Column(name="html_content", type="text", nullable=true)
      */
@@ -188,19 +185,6 @@ class Contract
     public function getPeoples() : Collection
     {
         return $this->peoples;
-    }
-    public function getTeam() : ?Team
-    {
-        return $this->team;
-    }
-    public function setTeam(Team $team) : self
-    {
-        $this->team = $team;
-        // set the owning side of the relation if necessary
-        if ($team->getContract() !== $this) {
-            $team->setContract($this);
-        }
-        return $this;
     }
     public function getHtmlContent() : ?string
     {
