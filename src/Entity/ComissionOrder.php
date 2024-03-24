@@ -785,7 +785,7 @@ class ComissionOrder
         if (($provider = $this->getProvider()) === null) {
             return false;
         }
-        return $currentUser->getPeople()->getPeopleCompany()->exists(function ($key, $element) use ($provider) {
+        return $currentUser->getPeople()->getLink()->exists(function ($key, $element) use ($provider) {
             return $element->getCompany() === $provider;
         });
     }

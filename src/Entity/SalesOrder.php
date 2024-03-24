@@ -1363,7 +1363,7 @@ class SalesOrder
         if (($provider = $this->getProvider()) === null)
             return false;
 
-        return $currentUser->getPeople()->getPeopleCompany()->exists(
+        return $currentUser->getPeople()->getLink()->exists(
             function ($key, $element) use ($provider) {
                 return $element->getCompany() === $provider;
             }

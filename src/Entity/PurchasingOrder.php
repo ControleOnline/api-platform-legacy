@@ -924,7 +924,7 @@ class PurchasingOrder
         if (($client = $this->getClient()) === null) {
             return false;
         }
-        return $currentUser->getPeople()->getPeopleCompany()->exists(function ($key, $element) use ($client) {
+        return $currentUser->getPeople()->getLink()->exists(function ($key, $element) use ($client) {
             return $element->getCompany() === $client;
         });
     }

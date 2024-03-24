@@ -369,10 +369,10 @@ class QuoteRepository
           sprintf('People client with email "%s" was not found', $data['email'])
         );
 
-      if ($people->getPeopleCompany()->count() == 0)
+      if ($people->getLink()->count() == 0)
         return $people;
 
-      return $people->getPeopleCompany()->first()->getCompany();
+      return $people->getLink()->first()->getCompany();
     }
     // if user is logged in
     else if ($this->user instanceof User) {
@@ -389,7 +389,7 @@ class QuoteRepository
       if (($people = $this->user->getPeople()) === null)
         return null;
 
-      $peopleLink = $people->getPeopleCompany()->first();
+      $peopleLink = $people->getLink()->first();
 
       return $peopleLink === false ? $people : $peopleLink->getCompany();
     }
@@ -582,7 +582,7 @@ class QuoteRepository
 
     // verify if client is a company of current user
 
-    $isMyCompany = $currentUser->getPeople()->getPeopleCompany()->exists(
+    $isMyCompany = $currentUser->getPeople()->getLink()->exists(
       function ($key, $element) use ($clientPeople) {
         return $element->getCompany() === $clientPeople;
       }

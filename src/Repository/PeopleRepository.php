@@ -274,7 +274,7 @@ class PeopleRepository extends ServiceEntityRepository
 
         $salesmans = [];
 
-        foreach ($people->getPeopleCompany() as $company) {
+        foreach ($people->getLink() as $company) {
             $salesmans[] = $company->getCompany();
         }
 
@@ -411,7 +411,7 @@ class PeopleRepository extends ServiceEntityRepository
 
         $salesmans = [];
 
-        foreach ($people->getPeopleCompany() as $company) {
+        foreach ($people->getLink() as $company) {
             $salesmans[] = $company->getCompany();
         }
 
