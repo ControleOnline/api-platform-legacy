@@ -389,9 +389,9 @@ class QuoteRepository
       if (($people = $this->user->getPeople()) === null)
         return null;
 
-      $peopleEmployee = $people->getPeopleCompany()->first();
+      $peopleLink = $people->getPeopleCompany()->first();
 
-      return $peopleEmployee === false ? $people : $peopleEmployee->getCompany();
+      return $peopleLink === false ? $people : $peopleLink->getCompany();
     }
 
     return null;

@@ -238,10 +238,10 @@ class TaxesRepository
 
       if ($provider !== null) {
         $people  = $this->user->getPeople();
-        $isAdmin = $provider->getPeopleEmployee()
+        $isAdmin = $provider->getLink()
           ->exists(
-            function ($key, \ControleOnline\Entity\PeopleLinkEmployee $peopleEmployee) use ($people) {
-              return $peopleEmployee->getEmployee() === $people;
+            function ($key, \ControleOnline\Entity\PeopleLink $peopleLink) use ($people) {
+              return $peopleLink->getPeople() === $people;
             }
           );
       }
