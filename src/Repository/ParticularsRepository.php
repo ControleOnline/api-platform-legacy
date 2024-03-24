@@ -2,7 +2,7 @@
 
 namespace ControleOnline\Repository;
 
-use ControleOnline\Entity\Particulars;
+use ControleOnline\Entity\Particulars\Particulars;
 use ControleOnline\Entity\People;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

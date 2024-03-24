@@ -247,18 +247,18 @@ class PurchasingOrder
      */
     private $quotes;
     /**
-     * @var \ControleOnline\Entity\Address
+     * @var \ControleOnline\Entity\Address\Address
      *
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Address")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Address\Address")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="address_origin_id", referencedColumnName="id")
      * })
      */
     private $addressOrigin;
     /**
-     * @var \ControleOnline\Entity\Address
+     * @var \ControleOnline\Entity\Address\Address
      *
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Address")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Address\Address")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="address_destination_id", referencedColumnName="id")
      * })
@@ -459,10 +459,10 @@ class PurchasingOrder
     /**
      * Set addressOrigin
      *
-     * @param \ControleOnline\Entity\Address $address_origin
+     * @param \ControleOnline\Entity\Address\Address $address_origin
      * @return Order
      */
-    public function setAddressOrigin(\ControleOnline\Entity\Address $address_origin = null)
+    public function setAddressOrigin(\ControleOnline\Entity\Address\Address $address_origin = null)
     {
         $this->addressOrigin = $address_origin;
         return $this;
@@ -470,7 +470,7 @@ class PurchasingOrder
     /**
      * Get addressOrigin
      *
-     * @return \ControleOnline\Entity\Address
+     * @return \ControleOnline\Entity\Address\Address
      */
     public function getAddressOrigin()
     {
@@ -479,10 +479,10 @@ class PurchasingOrder
     /**
      * Set addressDestination
      *
-     * @param \ControleOnline\Entity\Address $address_destination
+     * @param \ControleOnline\Entity\Address\Address $address_destination
      * @return Order
      */
-    public function setAddressDestination(\ControleOnline\Entity\Address $address_destination = null)
+    public function setAddressDestination(\ControleOnline\Entity\Address\Address $address_destination = null)
     {
         $this->addressDestination = $address_destination;
         return $this;
@@ -490,7 +490,7 @@ class PurchasingOrder
     /**
      * Get quote
      *
-     * @return \ControleOnline\Entity\Address
+     * @return \ControleOnline\Entity\Address\Address
      */
     public function getAddressDestination()
     {

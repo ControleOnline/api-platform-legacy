@@ -31,7 +31,7 @@ class SchoolProfessionalWeekly
     /**
      * @var PeopleProfessional
      *
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\PeopleProfessional")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\Link\PeopleProfessional")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="professional_id", referencedColumnName="id")
      * })
