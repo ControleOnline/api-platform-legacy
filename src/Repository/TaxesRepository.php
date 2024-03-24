@@ -225,8 +225,8 @@ class TaxesRepository
       $provider = null;
 
       if ($params['isMainCompany']) {
-        $stateo  = $this->manager->getRepository(\ControleOnline\Entity\Address\State::class)->findOneBy(['uf' => $params['stateOriginName']]);
-        $pstates = $this->manager->getRepository(\ControleOnline\Entity\Address\PeopleStates::class)
+        $stateo  = $this->manager->getRepository(\ControleOnline\Entity\State::class)->findOneBy(['uf' => $params['stateOriginName']]);
+        $pstates = $this->manager->getRepository(\ControleOnline\Entity\PeopleStates::class)
           ->findBy(['state' => $stateo]);
 
         if (!empty($pstates)) {

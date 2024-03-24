@@ -197,7 +197,7 @@ class Quotation
     /**
      * Remove quote_detail
      *
-     * @param \ControleOnline\Entity\Address\Address quote_detail
+     * @param \ControleOnline\Entity\Address quote_detail
      */
     public function removeQuoteDetail(\ControleOnline\Entity\QuoteDetail $quote_detail)
     {
