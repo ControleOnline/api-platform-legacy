@@ -11,7 +11,7 @@ use ApiPlatform\Metadata\Get;
 
 
 /**
- * @ORM\EntityListeners ({App\Listener\LogListener::class})
+ * @ORM\EntityListeners ({ControleOnline\Listener\LogListener::class})
  * @ORM\Table (name="config", uniqueConstraints={@ORM\UniqueConstraint (name="people_id", columns={"people_id","config_key"})})
  * @ORM\Entity (repositoryClass="ControleOnline\Repository\ConfigRepository")
  */

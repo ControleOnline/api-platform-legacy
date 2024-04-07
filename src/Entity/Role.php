@@ -20,7 +20,7 @@ use stdClass;
 /**
  * Menu
  *
- * @ORM\EntityListeners ({App\Listener\LogListener::class})
+ * @ORM\EntityListeners ({ControleOnline\Listener\LogListener::class})
  * @ORM\Table (name="role")
  * @ORM\Entity (repositoryClass="ControleOnline\Repository\RoleRepository")
  */

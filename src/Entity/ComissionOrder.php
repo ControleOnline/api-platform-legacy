@@ -17,7 +17,7 @@ use ControleOnline\Entity\Order;
 /**
  * ComissionOrder
  *
- * @ORM\EntityListeners ({App\Listener\LogListener::class})
+ * @ORM\EntityListeners ({ControleOnline\Listener\LogListener::class})
  * @ORM\Table (name="orders")
  * @ORM\Entity (repositoryClass="ControleOnline\Repository\ComissionOrderRepository")
  */

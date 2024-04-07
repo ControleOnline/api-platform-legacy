@@ -19,7 +19,7 @@ use stdClass;
 /**
  * SalesOrder
  *
- * @ORM\EntityListeners({App\Listener\LogListener::class})
+ * @ORM\EntityListeners({ControleOnline\Listener\LogListener::class})
  * @ApiResource(
  *     attributes={
  *          "formats"={"jsonld", "json", "html", "jsonhal", "csv"={"text/csv"}},
