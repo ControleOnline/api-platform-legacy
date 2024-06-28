@@ -2,6 +2,7 @@
 
 namespace ControleOnline\Repository;
 
+use ControleOnline\Service\DomainService;
 use ControleOnline\Entity\People;
 use ControleOnline\Entity\PeopleSalesman;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -17,8 +18,11 @@ use Doctrine\ORM\Query\ResultSetMapping;
  */
 class PeopleSalesmanRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+
+        private DomainService $domainService
+    ) {
         parent::__construct($registry, PeopleSalesman::class);
     }
 
@@ -47,14 +51,14 @@ class PeopleSalesmanRepository extends ServiceEntityRepository
 
         $rsm = new ResultSetMapping();
 
-        $rsm->addScalarResult('id'         , 'id'         , 'integer');
-        $rsm->addScalarResult('type'       , 'type'       , 'string');
-        $rsm->addScalarResult('document'   , 'document'   , 'string');
-        $rsm->addScalarResult('name'       , 'name'       , 'string');
-        $rsm->addScalarResult('alias'      , 'alias'      , 'string');
-        $rsm->addScalarResult('email'      , 'email'      , 'string');
+        $rsm->addScalarResult('id', 'id', 'integer');
+        $rsm->addScalarResult('type', 'type', 'string');
+        $rsm->addScalarResult('document', 'document', 'string');
+        $rsm->addScalarResult('name', 'name', 'string');
+        $rsm->addScalarResult('alias', 'alias', 'string');
+        $rsm->addScalarResult('email', 'email', 'string');
         $rsm->addScalarResult('is_provider', 'is_provider', 'boolean');
-        $rsm->addScalarResult('enable'     , 'enable'    , 'boolean');
+        $rsm->addScalarResult('enable', 'enable', 'boolean');
 
         $nqu = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 
@@ -70,7 +74,7 @@ class PeopleSalesmanRepository extends ServiceEntityRepository
                 peo.id                  AS people_id,
                 peo.alias               AS people_alias,
                 ima.id                  AS file_id,
-                '".$_SERVER['HTTP_HOST'].'/files/download/'."' AS file_domain,
+                '" . $this->domainService->getMainDomain() . '/files/download/' . "' AS file_domain,
                 ima.id                 AS file_url,
                 (
                     SELECT document FROM document WHERE people_id = peo.id and document_type_id = 3
@@ -87,14 +91,14 @@ class PeopleSalesmanRepository extends ServiceEntityRepository
 
         $rsm = new ResultSetMapping();
 
-        $rsm->addScalarResult('people_id'      , 'people_id', 'integer');
-        $rsm->addScalarResult('people_alias'   , 'people_alias');
-        $rsm->addScalarResult('image_id'       , 'file_id');
-        $rsm->addScalarResult('image_domain'   , 'file_domain');
-        $rsm->addScalarResult('image_url'      , 'file_url');
+        $rsm->addScalarResult('people_id', 'people_id', 'integer');
+        $rsm->addScalarResult('people_alias', 'people_alias');
+        $rsm->addScalarResult('image_id', 'file_id');
+        $rsm->addScalarResult('image_domain', 'file_domain');
+        $rsm->addScalarResult('image_url', 'file_url');
         $rsm->addScalarResult('people_document', 'people_document');
-        $rsm->addScalarResult('commission'     , 'commission', 'float');
-        $rsm->addScalarResult('enable'         , 'enable'   , 'boolean');
+        $rsm->addScalarResult('commission', 'commission', 'float');
+        $rsm->addScalarResult('enable', 'enable', 'boolean');
 
         $nqu = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 
@@ -123,7 +127,7 @@ class PeopleSalesmanRepository extends ServiceEntityRepository
 
         $nqu = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 
-        $nqu->setParameter('people_id' , $people->getId() );
+        $nqu->setParameter('people_id', $people->getId());
         $nqu->setParameter('company_id', $company->getId());
 
         return empty($nqu->getArrayResult()) === false;
@@ -149,10 +153,10 @@ class PeopleSalesmanRepository extends ServiceEntityRepository
 
         $rsm = new ResultSetMapping();
 
-        $rsm->addScalarResult('id'   , 'id'   , 'integer');
-        $rsm->addScalarResult('name' , 'name' , 'string');
+        $rsm->addScalarResult('id', 'id', 'integer');
+        $rsm->addScalarResult('name', 'name', 'string');
         $rsm->addScalarResult('alias', 'alias', 'string');
-        $rsm->addScalarResult('type' , 'type' , 'string');
+        $rsm->addScalarResult('type', 'type', 'string');
 
         $nqu = $this->getEntityManager()->createNativeQuery($sql, $rsm);
 

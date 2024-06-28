@@ -2,6 +2,7 @@
 
 namespace ControleOnline\Repository;
 
+use ControleOnline\Service\DomainService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Component\Security\Core\Security;
@@ -20,7 +21,9 @@ class TaxesRepository
   
   private $manager       = null;
 
-  public function __construct(ManagerRegistry $registry,EntityManagerInterface $manager, Security $security)
+  public function __construct(ManagerRegistry $registry,EntityManagerInterface $manager, 
+    
+  private DomainService $domainService, Security $security)
   {
     $this->manager = $manager;
     $this->user    = $security->getUser();
@@ -1518,7 +1521,7 @@ LEFT JOIN rating ON rating.people_rated = pep.id
     }
     foreach ($rows as $row) {
       if (!array_key_exists($row['groupId'], $result)) {
-        $file = !empty($row['carrierFile']) ? $_SERVER['HTTP_HOST'] . $row['carrierFile'] : null;
+        $file = !empty($row['carrierFile']) ? $this->domainService->getMainDomain() . $row['carrierFile'] : null;
 
         $result[$row['groupId']] = [
           'id'               => $row['groupId'],
