@@ -84,7 +84,7 @@ use stdClass;
  *           "access_control"="is_granted('ROLE_CLIENT')",
  *           "method"        ="POST",
  *           "path"          ="/sales/orders/{id}/detail/create-dacte",
- *           "controller"    =App\Controller\CreateDacteAction::class,
+ *           "controller"    =ControleOnline\Controller\CreateDacteAction::class,
  *         }, 
  *         "get_summary" ={
  *           "access_control"="is_granted('ROLE_ADMIN') or (is_granted('ROLE_CLIENT') and previous_object.canAccess(user))",
