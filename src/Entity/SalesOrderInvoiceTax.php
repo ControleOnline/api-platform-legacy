@@ -101,7 +101,7 @@ class SalesOrderInvoiceTax
      * @param \ControleOnline\Entity\SalesOrder $order
      * @return SalesOrderInvoiceTax
      */
-    public function setOrder(\ControleOnline\Entity\SalesOrder $order = null)
+    public function setOrder(\ControleOnline\Entity\Order $order = null)
     {
         $this->order = $order;
         return $this;
