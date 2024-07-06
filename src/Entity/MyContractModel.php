@@ -12,11 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\EntityListeners ({ControleOnline\Listener\LogListener::class})
- * @ORM\Table (name="contract_model")
- * @ORM\Entity (repositoryClass="ControleOnline\Repository\MyContractModelRepository")
+ * @ORM\Table (name="document_model")
+ * @ORM\Entity (repositoryClass="ControleOnline\Repository\MyDocumentModelRepository")
  */
-#[ApiResource(operations: [new Get(security: 'is_granted(\'ROLE_CLIENT\')'), new GetCollection(security: 'is_granted(\'ROLE_CLIENT\')')], formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']], normalizationContext: ['groups' => ['mycontractmodel_read']], denormalizationContext: ['groups' => ['mycontractmodel_write']])]
-class MyContractModel
+#[ApiResource(operations: [new Get(security: 'is_granted(\'ROLE_CLIENT\')'), new GetCollection(security: 'is_granted(\'ROLE_CLIENT\')')], formats: ['jsonld', 'json', 'html', 'jsonhal', 'csv' => ['text/csv']], normalizationContext: ['groups' => ['mydocument_model_read']], denormalizationContext: ['groups' => ['mydocument_model_write']])]
+class MyDocumentModel
 {
     /**
      * @ORM\Column(type="integer", nullable=false)
@@ -25,8 +25,8 @@ class MyContractModel
      */
     private $id;
     /**
-     * @ORM\Column(name="contract_model", type="string", nullable=false)
-     * @Groups({"mycontractmodel_read", "my_contract_item_read", "mycontract_put_read", "mycontract_addendum_read"})
+     * @ORM\Column(name="document_model", type="string", nullable=false)
+     * @Groups({"mydocument_model_read", "my_contract_item_read", "mycontract_put_read", "mycontract_addendum_read"})
      */
     private $contractModel;
     /**
@@ -44,15 +44,15 @@ class MyContractModel
     /**
      * @return string
      */
-    public function getContractModel() : string
+    public function getDocumentModel() : string
     {
         return $this->contractModel;
     }
     /**
      * @param string $contractModel
-     * @return MyContractModel
+     * @return MyDocumentModel
      */
-    public function setContractModel(string $contractModel) : MyContractModel
+    public function setDocumentModel(string $contractModel) : MyDocumentModel
     {
         $this->contractModel = $contractModel;
         return $this;
@@ -66,9 +66,9 @@ class MyContractModel
     }
     /**
      * @param string $content
-     * @return MyContractModel
+     * @return MyDocumentModel
      */
-    public function setContent(string $content) : MyContractModel
+    public function setContent(string $content) : MyDocumentModel
     {
         $this->content = $content;
         return $this;

@@ -113,9 +113,9 @@ class MyContract
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\MyContractModel")
+     * @ORM\ManyToOne(targetEntity="ControleOnline\Entity\MyDocumentModel")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="contract_model_id", referencedColumnName="id", nullable=false)
+     *   @ORM\JoinColumn(name="document_model_id", referencedColumnName="id", nullable=false)
      * })
      * @Groups({"my_contract_item_read", "mycontract_edit", "mycontract_put_read", "mycontract_addendum_read"})
      * @Assert\NotBlank(groups={"mycontract_edit_validation"})
@@ -217,16 +217,16 @@ class MyContract
         return $this->id;
     }
     /**
-     * @return MyContractModel
+     * @return MyDocumentModel
      */
-    public function getContractModel(): MyContractModel
+    public function getDocumentModel(): MyDocumentModel
     {
         return $this->contractModel;
     }
     /**
-     * @param MyContractModel $contractModel
+     * @param MyDocumentModel $contractModel
      */
-    public function setContractModel(MyContractModel $contractModel): MyContract
+    public function setDocumentModel(MyDocumentModel $contractModel): MyContract
     {
         $this->contractModel = $contractModel;
         return $this;
